@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tìm giá trị nhỏ nhất và lớn nhất của 1 mảng cho trước</title>
+</head>
+
+<body>
+    <p id="result"></p>
+    <script>
+        let arr = [];
+        for (let i = 0; i < 101; i++) {
+            arr.push(Math.floor(Math.random() * 101));
+        }
+        let min = max = arr[0];
+        for (let i = 1; i < 101; i++) {
+            if (arr[i] > max) max = arr[i];
+        }
+        for (let i = 1; i < 101; i++) {
+            if (arr[i] < min) min = arr[i];
+        }
+
+        let result = document.getElementById('result');
+        for (let i = 0; i < 101; i++) {
+            if ((i % 10 == 0 && i != 0)) result.innerHTML += '<br>';
+            result.innerHTML += `${arr[i]} &nbsp;&nbsp;      `;
+        }
+        result.innerHTML += `<br> The minimum value is: ${min}`;
+        result.innerHTML += `<br> The maximum value is: ${max}`;
+    </script>
+</body>
+
+</html>
