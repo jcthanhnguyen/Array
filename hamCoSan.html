@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sử dụng hàm có sẵn </title>
+</head>
+
+<body>
+    <script>
+        // ex 1: 
+
+        let myColor = ["Red", 'Green', 'White', 'Black'];
+        document.write(myColor.join() + '<br>');
+
+        //ex 2: 
+        let input = prompt('Input: ').toString();
+        let result = [input[0]];
+        for (let i = 1; i < input.length - 1; i++) {
+            if (input[i - 1] % 2 === 0 && input[i] % 2 === 0) result.push('-', input[i]);
+            else result.push(input[i]);
+        }
+        document.write(result.join('') + '<br>');
+
+
+        //ex 3: 
+        let str = prompt('Input: ').toString();
+        let u = 'QWERTYUIOPKJHGFDSAZXCVBNM';
+        let l = 'qwertyuiopkjhgfdsazxcvbnm';
+        let r = [];
+        for (let i = 0; i < str.length; i++) {
+            if (u.indexOf(str[i]) >= 0) r.push(str[i].toLowerCase());
+            else if (l.indexOf(str[i]) >= 0) r.push(str[i].toUpperCase());
+            else r.push(str[i]);
+        }
+        document.write(r.join(''));
+    </script>
+</body>
+
+</html>
