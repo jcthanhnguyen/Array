@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Text area </title>
+</head>
+
+<body>
+    <h3>Type anything slowly</h3>
+    <textarea name="" id="text" cols="30" rows="10"></textarea>
+    <p id="result"></p>
+    <script>
+        let input = document.getElementById('text');
+        let str = 'Tôi là một đứa ngốc!!!';
+        let data = '';
+        let index = 0;
+        input.addEventListener('input', () => {
+            data += str[index];
+            index++;
+            input.value = data;
+
+        })
+    </script>
+</body>
+
+</html>
