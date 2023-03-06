@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Tic Tac Toe</h3>
+    <hr>
+    <p id="game"></p>
+    <button type="button" id="change">Change value</button>
+
+    <script>
+        let b = document.getElementById('game');
+        let data = '';
+        let board = [];
+        for (let i = 0; i < 5; i++) {
+            board[i] = ['(.)&nbsp;&nbsp;', '(.)&nbsp;&nbsp;', '(.)&nbsp;&nbsp;', '(.)&nbsp;&nbsp;', '(.)&nbsp;&nbsp;'];
+        }
+
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j];
+            }
+            data += '<br>';
+        }
+
+        b.innerHTML = data;
+
+        let win = false;
+        let value = true;
+        let change = document.getElementById('change');
+        change.addEventListener('click', () => {
+            if (win == false) {
+                let winner = '';
+                data = '';
+                let x = parseInt(prompt('X: '));
+                let y = parseInt(prompt('Y: '));
+                if (value == true) {
+                    board[x][y] = 'X&nbsp;&nbsp;';
+                    value = !value;
+                } else {
+                    board[x][y] = 'O&nbsp;&nbsp;';
+                    value = !value;
+                }
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        data += board[i][j];
+                    }
+                    data += '<br>';
+                }
+                b.innerHTML = data;
+
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 5; j++) {
+                        if (board[i][j] == board[i + 1][j] && board[i][j] == board[i + 2][j] && board[i][j] != '(.)&nbsp;&nbsp;') {
+                            win = true;
+                            winner += board[i][j];
+                        }
+                    }
+                }
+
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (board[i][j] == board[i][j + 1] && board[i][j] == board[i][j + 2] && board[i][j] != '(.)&nbsp;&nbsp;') {
+                            win = true;
+                            winner += board[i][j];
+                        }
+                    }
+                }
+
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (board[i][j] == board[i + 1][j + 1] && board[i][j] == board[i + 2][j + 2] && board[i][j] != '(.)&nbsp;&nbsp;') {
+                            win = true;
+                            winner += board[i][j];
+                        }
+                    }
+                }
+
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 4; j > 1; j--) {
+                        if (board[i][j] == board[i + 1][j - 1] && board[i][j] == board[i + 2][j - 2] && board[i][j] != '(.)&nbsp;&nbsp;') {
+                            win = true;
+                            winner += board[i][j];
+                        }
+                    }
+                }
+
+
+                if (win == true) {
+                    data += ('<br>' + winner + ' is the winner');
+                    b.innerHTML = data;
+                }
+            }
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
